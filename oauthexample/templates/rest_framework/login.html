@@ -1,0 +1,11 @@
+{% extends 'rest_framework/login_base.html' %}
+{% load staticfiles %}
+{% block branding %}
+ <h3 style="margin: 0 0 20px;">Example OAuth API</h3>
+{% endblock %}
+
+
+{% block bootstrap_theme %}
+        <link rel="stylesheet" href="{% static "bootstrap.css" %}" >
+        <link rel="stylesheet" href="{% static "admin/sb-admin-2.css" %}" >
+{% endblock %}

@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    restart: always
+  web:
+    build: .
+    restart: always
+    command: >
+            sh -c "python3 manage.py migrate  && python3 manage.py shell < user_creation_script.py && python3 manage.py collectstatic --no-input && python3 manage.py runserver 0.0.0.0:8000"
+            # sh -c "python3 manage.py migrate oauth2_provider"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db

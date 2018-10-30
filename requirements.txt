@@ -1,0 +1,12 @@
+Django
+psycopg2
+django-microsoft-auth
+django-cors-middleware
+django-cors-headers
+django-crispy-forms
+django-docs
+django-extensions
+django-filter
+django-rest-swagger
+djangorestframework
+djangorestframework-jwt
