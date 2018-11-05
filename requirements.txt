@@ -8,3 +8,7 @@ django-filter
 django-rest-swagger
 djangorestframework
 djangorestframework-jwt
+python-decouple
+psycopg2
+django-rest-swagger
+

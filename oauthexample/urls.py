@@ -18,9 +18,14 @@ from django.urls import path
 from django.conf.urls import include
 from django.conf.urls import url
 
+from oauthexample import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^microsoft/', include('microsoft_auth.urls', namespace='microsoft')),
     url(r'^accounts/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^accounts/', include('rest_framework.urls', namespace='rest_framework')),
+    url(regex=r'^', view=views.schema_view, name='docs'),
+    url(regex=r'^hello-world/', view=views.HelloWorld.as_view(), name='helloworld'),
 ]

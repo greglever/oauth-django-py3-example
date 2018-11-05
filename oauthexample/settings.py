@@ -9,10 +9,8 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-
-from microsoft_auth import *
-
 import os
+from decouple import AutoConfig
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
+    'rest_framework_swagger',
     'django.contrib.sites',
     'microsoft_auth',
 ]
@@ -152,8 +151,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'oauthexample', 'staticfiles')
 # include Microsoft Accounts, Office 365 Enterpirse and Azure AD accounts
 MICROSOFT_AUTH_LOGIN_TYPE = 'ma'
 
-MICROSOFT_AUTH_CLIENT_ID = 'insert-client-id'
-MICROSOFT_AUTH_CLIENT_SECRET = 'insert-client-secret'
+config = AutoConfig()
+MICROSOFT_AUTH_CLIENT_ID = config("MICROSOFT_AUTH_CLIENT_ID")
+MICROSOFT_AUTH_CLIENT_SECRET = config("MICROSOFT_AUTH_CLIENT_SECRET")
 
 SITE_ID = 1     # The domain associated for this site ID can be set by going to:
                 # /admin/sites/site/1/change will be used as the callback URI
